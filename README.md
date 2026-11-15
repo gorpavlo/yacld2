@@ -142,6 +142,7 @@ resource "yandex_lb_network_load_balancer" "balancer-1" {
 }
 ```
 
-![screenshot](img/1.png)
-![screenshot](img/2.png)
-![screenshot](img/3.png)
+![balancer](img/1.png)
+![balancer_page](img/2.png)
+![vms](img/3.png)
+![target_group](img/4.png)
