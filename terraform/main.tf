@@ -1,3 +1,9 @@
+
+#считываем данные об образе ОС
+data "yandex_compute_image" "ubuntu_2204_lts" {
+  family = "ubuntu-2204-lts"
+}
+
 terraform {
   required_providers {
     yandex = {
@@ -34,14 +40,17 @@ resource "yandex_compute_instance" "vm" {
   platform_id = "standard-v3"
   zone        = var.yc_zone
 
-  resources {
-    cores  = 2
-    memory = 2
+   resources {
+    cores         = 2
+    memory        = 1
+    core_fraction = 20
   }
 
   boot_disk {
     initialize_params {
-      image_id = "fd8j57s0d49lq8613r9h"
+      image_id = data.yandex_compute_image.ubuntu_2204_lts.image_id
+      type     = "network-hdd"
+      size     = 10
     }
   }
 
